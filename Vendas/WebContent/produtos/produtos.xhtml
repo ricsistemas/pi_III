@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://java.sun.com/jsf/html">
+
+
+<h:head>
+<title>
+Produtos
+
+	
+</title>
+	<link rel="stylesheet" href="login.css" />
+	
+</h:head>
+  <h:body>
+   
+     <h:form id="formLogin">
+      <h:inputHidden value="#{produtos.id}" />
+       <h:panelGrid id="gridLoginSenha" columns="2">
+			Grupo:
+			<h:selectOneMenu id="radio_grup"
+				value="#{produtos.grupo.id}" style="width:130px;"
+				rendered="true">
+				<f:selectItem itemLabel="" />
+				<f:selectItems value="#{controllerProdutos.listar_grupos()}" var="grup"
+					itemLabel="#{grup.descricao}" itemValue="#{grup.id}" />
+			</h:selectOneMenu>         
+             Descricao do Produto:
+			<h:inputText id="desc" value="#{produtos.descricao}" />
+             Custo:
+			<h:inputText id="custo" value="#{produtos.custo}" />
+             Preço:
+			<h:inputText id="preco" value="#{produtos.preco}" />
+        </h:panelGrid>
+        <h:messages id="msgErro" style="color: red"/>
+        <h:commandButton id="botao" value="Salvar" action="#{controllerProdutos.salvar(produtos)}"/>
+      
+  
+      
+      </h:form>
+      
+    </h:body>
+
+</html>
+

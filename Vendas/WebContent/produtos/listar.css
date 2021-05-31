@@ -1,0 +1,22 @@
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th, td {
+	text-align: left;
+	padding: 4px;
+}
+
+tr:nth-child(even) {
+	background-color:#ebfff8;
+}
+
+th {
+	background-color: #009e9e;
+	color: white;
+}
+.panelGridCenter td,.panelGridCenter tr {
+    text-align: center;
+}

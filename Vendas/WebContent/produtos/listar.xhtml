@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://java.sun.com/jsf/html">
+
+
+<h:head>
+<link rel="stylesheet"
+		href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+		integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+		crossorigin="anonymous" />
+		<link rel="stylesheet" href="listar.css" />
+
+<title>
+Produtos
+</title>
+
+</h:head>
+<h:body>
+<h:form id="idPessoas">
+		<a href="../index.xhtml">&lt;&lt; </a>
+		<br />
+		<h:commandButton action="#{controllerProdutos.cadastrar()}"
+			value="Novo" class="btn btn-success"></h:commandButton>
+			<h2>
+				Produtos
+			</h2>
+	
+		<br />
+
+		<h:dataTable value="#{controllerProdutos.listar_produtos()}" var="prod"
+			>
+			<h:column>
+				<f:facet name="header">id</f:facet>
+					#{prod.id}	</h:column>
+			<h:column>
+				<f:facet name="header">Descricao</f:facet>
+					#{prod.descricao}
+				</h:column>
+
+
+			<h:column>
+				<f:facet name="header">Preço</f:facet>
+				<h:outputText value="#{prod.preco}">
+					<f:convertNumber type="currency" currencySymbol="R$ "
+						locale="pt_BR" />
+				</h:outputText>
+						
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Ação</f:facet>
+				<h:column>
+					<h:commandLink action="#"
+						title="Alterar este item" class="fa fa-edit" /> | 
+					<h:commandLink
+						onclick="if (!confirm('Quer mesmno excluir?')) return false"
+						action="#{controllerPessoas.excluir(prod.id)}" title="Excluir item"
+						class="fa fa-trash" style="color:red" aria-hidden="true" />
+				</h:column>
+			</h:column>
+
+		</h:dataTable>
+
+	</h:form>
+
+</h:body>
+</html>
+
